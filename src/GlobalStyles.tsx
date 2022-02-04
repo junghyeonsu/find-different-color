@@ -30,6 +30,9 @@ const GlobalStyle = createGlobalStyle`
 		line-height: 1;
 		font-family: 'Gugi', cursive;
 	}
+	button {
+		font-family: 'Gugi', cursive;
+	}
 	ol, ul {
 		list-style: none;
 	}
