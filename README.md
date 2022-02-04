@@ -1,7 +1,9 @@
-# find-different-color 🕹️
+# find-different-color
 
 > **다른 색깔 찾기 게임**  
 > [넘블 프로젝트](https://numble-react.vercel.app/) 클론하기 챌린지
+
+### [🕹️ 게임하러 가기 🕹️](https://find-different-color.vercel.app/)
 
 # 기간
 
