@@ -17,7 +17,6 @@
 - TypeScript (language)
 - create-react-app (react)
 - react-router-dom (router)
-- Material-ui (component)
 - styled-components (CSS in JS)
 - Eslint & Prettier (linter & formatter)
 - Vercel (deploy)
