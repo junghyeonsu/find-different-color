@@ -20,6 +20,7 @@
 - create-react-app (react)
 - react-router-dom (router)
 - styled-components (CSS in JS)
+- react-animated-numbers (number animation)
 - Eslint & Prettier (linter & formatter)
 - Vercel (deploy)
 
