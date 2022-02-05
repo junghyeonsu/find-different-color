@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import { Card } from '..';
 import { Board as BoardProps } from './types';
 import * as Styled from './styled';
@@ -9,14 +9,33 @@ function Board({ stage }: BoardProps): JSX.Element {
   const cardAmount = useMemo(() => boardRow ** 2, [boardRow]);
   const cardSize = useMemo(() => BOARD_SIZE / (cardAmount / boardRow), [cardAmount, boardRow]);
   const answerCardIndex = useMemo(() => Math.floor(Math.random() * cardAmount), [cardAmount]);
+  const difficulty = useMemo(() => (100 - stage * 2 > 0 ? 100 - stage * 2 : 2), [stage]);
+
+  const pickRandomColor = useCallback(() => Math.floor(Math.random() * 256), []);
+  const pickAnswerRedColor = useCallback(
+    red => (red > 100 ? red - difficulty : red + difficulty),
+    [difficulty],
+  );
+
+  const colors = useMemo((): { wrong: string; answer: string } => {
+    const red = pickRandomColor();
+    const green = pickRandomColor();
+    const blue = pickRandomColor();
+    const answerRed = pickAnswerRedColor(red);
+
+    return {
+      wrong: `rgb(${red}, ${green}, ${blue})`,
+      answer: `rgb(${answerRed}, ${green}, ${blue})`,
+    };
+  }, [pickRandomColor, pickAnswerRedColor]);
 
   const cards = useMemo(
     () =>
       Array.from(Array(cardAmount), (_, index) =>
         answerCardIndex === index ? (
-          <Card size={cardSize} key={index} />
+          <Card color={`${colors.answer}`} size={cardSize} key={index} />
         ) : (
-          <Card size={cardSize} key={index} />
+          <Card color={`${colors.wrong}`} size={cardSize} key={index} />
         ),
       ),
     [cardAmount, cardSize, answerCardIndex],
