@@ -5,4 +5,4 @@ function Board(): JSX.Element {
   return <Styled.Container>Board</Styled.Container>;
 }
 
-export default Board;
+export default React.memo(Board);

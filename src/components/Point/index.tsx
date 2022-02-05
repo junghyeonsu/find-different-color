@@ -14,4 +14,4 @@ function Point({ point }: PointProps): JSX.Element {
   );
 }
 
-export default Point;
+export default React.memo(Point);

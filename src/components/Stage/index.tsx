@@ -15,4 +15,4 @@ function Stage({ active, stage }: StageProps): JSX.Element {
   );
 }
 
-export default Stage;
+export default React.memo(Stage);
