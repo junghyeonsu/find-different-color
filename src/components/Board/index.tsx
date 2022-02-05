@@ -4,11 +4,14 @@ import { Board as BoardProps } from './types';
 import * as Styled from './styled';
 import { BOARD_SIZE } from '../../constants';
 
-function Board({ stage }: BoardProps): JSX.Element {
+function Board({ stage, handleAnswerCardClick }: BoardProps): JSX.Element {
   const boardRow = useMemo(() => Math.round((stage + 0.5) / 2) + 1, [stage]);
   const cardAmount = useMemo(() => boardRow ** 2, [boardRow]);
   const cardSize = useMemo(() => BOARD_SIZE / (cardAmount / boardRow), [cardAmount, boardRow]);
-  const answerCardIndex = useMemo(() => Math.floor(Math.random() * cardAmount), [cardAmount]);
+  const answerCardIndex = useMemo(
+    () => Math.floor(Math.random() * cardAmount),
+    [cardAmount, stage],
+  );
   const difficulty = useMemo(() => (100 - stage * 2 > 0 ? 100 - stage * 2 : 2), [stage]);
 
   const pickRandomColor = useCallback(() => Math.floor(Math.random() * 256), []);
@@ -27,18 +30,31 @@ function Board({ stage }: BoardProps): JSX.Element {
       wrong: `rgb(${red}, ${green}, ${blue})`,
       answer: `rgb(${answerRed}, ${green}, ${blue})`,
     };
-  }, [pickRandomColor, pickAnswerRedColor]);
+  }, [pickRandomColor, pickAnswerRedColor, stage]);
 
   const cards = useMemo(
     () =>
       Array.from(Array(cardAmount), (_, index) =>
         answerCardIndex === index ? (
-          <Card color={`${colors.answer}`} size={cardSize} key={index} />
+          <Card
+            onClick={handleAnswerCardClick}
+            color={`${colors.answer}`}
+            size={cardSize}
+            key={index}
+          />
         ) : (
-          <Card color={`${colors.wrong}`} size={cardSize} key={index} />
+          <Card
+            onClick={() => {
+              // eslint-disable-next-line no-console
+              console.log('hi');
+            }}
+            color={`${colors.wrong}`}
+            size={cardSize}
+            key={index}
+          />
         ),
       ),
-    [cardAmount, cardSize, answerCardIndex],
+    [cardAmount, cardSize, answerCardIndex, colors],
   );
 
   return <Styled.Board>{cards}</Styled.Board>;

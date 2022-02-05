@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Board, Timer, Stage, Point } from '../../components';
 import useTimer from '../../hooks/useTimer';
 import * as Styled from './styled';
@@ -10,13 +10,17 @@ function Play(): JSX.Element {
   const [active, setActive] = useState<boolean>(false);
   const { time, startGame, stopGame, resetTime } = useTimer();
 
-  // const onClickButton = () => {
-  //   setStage(stage + 1);
-  //   setActive(true);
-  //   setTimeout(() => {
-  //     setActive(false);
-  //   }, 100);
-  // };
+  const handleAnswerCardClick = useCallback(() => {
+    setStage(stage => stage + 1);
+    setActive(true);
+    setTimeout(() => {
+      setActive(false);
+    }, 100);
+  }, []);
+
+  // const handleWrongCardClick = useCallback(() => {
+
+  // }, []);
 
   useEffect(() => {
     startGame();
@@ -31,7 +35,7 @@ function Play(): JSX.Element {
     <Styled.Container>
       <Stage active={active} stage={stage} />
       <Timer time={time} />
-      <Board stage={stage} />
+      <Board handleAnswerCardClick={handleAnswerCardClick} stage={stage} />
       <Point point={point} />
     </Styled.Container>
   );

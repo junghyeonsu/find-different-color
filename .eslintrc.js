@@ -15,7 +15,6 @@ module.exports = {
     'no-use-before-define': 0,
     'import/no-unresolved': 0,
     'react/react-in-jsx-scope': 0,
-    'import/no-extraneous-dependencies': 0,
     'no-shadow': 0,
     'react/prop-types': 0,
     'react/jsx-filename-extension': [2, { extensions: ['.js', '.jsx', '.ts', '.tsx'] }],
