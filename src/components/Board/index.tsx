@@ -45,6 +45,7 @@ function Board({ stage, handleAnswerCardClick }: BoardProps): JSX.Element {
         ) : (
           <Card
             onClick={() => {
+              // TODO:
               // eslint-disable-next-line no-console
               console.log('hi');
             }}

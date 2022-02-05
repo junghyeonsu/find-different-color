@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
+// TODO: eslint 지우기
 import { useState, useEffect, useCallback } from 'react';
 import { Board, Timer, Stage, Point } from '../../components';
 import useTimer from '../../hooks/useTimer';
@@ -18,6 +19,7 @@ function Play(): JSX.Element {
     }, 100);
   }, []);
 
+  // TODO:
   // const handleWrongCardClick = useCallback(() => {
 
   // }, []);
