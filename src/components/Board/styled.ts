@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
+export const Board = styled.div`
+  display: flex;
+  flex-wrap: wrap;
   width: 360px;
   height: 360px;
   background-color: gray;
