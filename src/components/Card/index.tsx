@@ -1,8 +1,8 @@
 import * as Styled from './styled';
 import { Card as CardProps } from './types';
 
-function Card({ cardAmount }: CardProps): JSX.Element {
-  return <Styled.Card cardAmount={cardAmount}>Card</Styled.Card>;
+function Card({ size }: CardProps): JSX.Element {
+  return <Styled.Card size={size} />;
 }
 
 export default Card;

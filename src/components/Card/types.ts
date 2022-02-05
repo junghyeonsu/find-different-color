@@ -1,3 +1,3 @@
 export interface Card {
-  cardAmount: number;
+  size: number;
 }
