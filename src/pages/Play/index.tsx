@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import AnimatedNumbers from 'react-animated-numbers';
 
-import { Board } from '../../components';
+import { Board, Timer } from '../../components';
 import * as Styled from './styled';
 
 function Play(): JSX.Element {
@@ -29,6 +29,7 @@ function Play(): JSX.Element {
         <Styled.Stage active={active}>{stage}</Styled.Stage>
         <Styled.StageText>스테이지</Styled.StageText>
       </Styled.StageContainer>
+      <Timer />
       <Board />
       <Styled.Point>
         <AnimatedNumbers includeComma animateToNumber={count} />

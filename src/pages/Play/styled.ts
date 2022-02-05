@@ -10,6 +10,7 @@ export const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  row-gap: 10px;
   width: 100vw;
   height: 100vh;
 `;
