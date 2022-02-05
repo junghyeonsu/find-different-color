@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useState, useEffect } from 'react';
 import { Board, Timer, Stage, Point } from '../../components';
 import useTimer from '../../hooks/useTimer';
