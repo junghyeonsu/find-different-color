@@ -9,8 +9,8 @@ function Board({ stage, handleAnswerCardClick }: BoardProps): JSX.Element {
   const cardAmount = useMemo(() => boardRow ** 2, [boardRow]);
   const cardSize = useMemo(() => BOARD_SIZE / (cardAmount / boardRow), [cardAmount, boardRow]);
   const answerCardIndex = useMemo(
-    () => Math.floor(Math.random() * cardAmount),
-    [cardAmount, stage],
+    () => Math.floor(Math.random() * (Math.round((stage + 0.5) / 2) + 1) ** 2),
+    [stage],
   );
   const difficulty = useMemo(() => (100 - stage * 2 > 0 ? 100 - stage * 2 : 2), [stage]);
 
@@ -30,7 +30,7 @@ function Board({ stage, handleAnswerCardClick }: BoardProps): JSX.Element {
       wrong: `rgb(${red}, ${green}, ${blue})`,
       answer: `rgb(${answerRed}, ${green}, ${blue})`,
     };
-  }, [pickRandomColor, pickAnswerRedColor, stage]);
+  }, [pickRandomColor, pickAnswerRedColor]);
 
   const cards = useMemo(
     () =>
@@ -54,7 +54,7 @@ function Board({ stage, handleAnswerCardClick }: BoardProps): JSX.Element {
           />
         ),
       ),
-    [cardAmount, cardSize, answerCardIndex, colors],
+    [cardAmount, answerCardIndex, handleAnswerCardClick, colors.answer, colors.wrong, cardSize],
   );
 
   return <Styled.Board>{cards}</Styled.Board>;

@@ -25,11 +25,11 @@ function Play(): JSX.Element {
   useEffect(() => {
     startGame();
     return () => stopGame();
-  }, []);
+  }, [startGame, stopGame]);
 
   useEffect(() => {
     if (time <= 0) resetTime();
-  }, [time]);
+  }, [resetTime, time]);
 
   return (
     <Styled.Container>
