@@ -31,7 +31,7 @@ function Play(): JSX.Element {
     <Styled.Container>
       <Stage active={active} stage={stage} />
       <Timer time={time} />
-      <Board />
+      <Board stage={stage} />
       <Point point={point} />
     </Styled.Container>
   );

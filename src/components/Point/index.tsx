@@ -1,10 +1,7 @@
 import React from 'react';
 import AnimatedNumbers from 'react-animated-numbers';
 import * as Styled from './styled';
-
-interface PointProps {
-  point: number;
-}
+import { Point as PointProps } from './types';
 
 function Point({ point }: PointProps): JSX.Element {
   return (

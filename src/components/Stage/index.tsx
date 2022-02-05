@@ -1,10 +1,6 @@
 import React from 'react';
 import * as Styled from './styled';
-
-interface StageProps {
-  active: boolean;
-  stage: number;
-}
+import { Stage as StageProps } from './types';
 
 function Stage({ active, stage }: StageProps): JSX.Element {
   return (

@@ -1,8 +1,5 @@
 import styled from 'styled-components';
-
-interface StageProps {
-  active: boolean;
-}
+import { Stage as StageProps } from './types';
 
 export const StageContainer = styled.div`
   display: flex;
