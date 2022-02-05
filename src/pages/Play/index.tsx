@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import AnimatedNumbers from 'react-animated-numbers';
-
-import { Board, Timer, Stage } from '../../components';
+import { Board, Timer, Stage, Point } from '../../components';
 import * as Styled from './styled';
 
 function Play(): JSX.Element {
-  const [count, setCount] = useState<number>(100000);
+  const [point, setPoint] = useState<number>(100000);
   const [stage, setStage] = useState<number>(1);
   const [active, setActive] = useState<boolean>(false);
 
@@ -19,7 +17,7 @@ function Play(): JSX.Element {
 
   useEffect(() => {
     setInterval(() => {
-      setCount(prev => prev + 1);
+      setPoint(prev => prev + 1);
     }, 1000);
   }, []);
 
@@ -28,9 +26,7 @@ function Play(): JSX.Element {
       <Stage active={active} stage={stage} />
       <Timer />
       <Board />
-      <Styled.Point>
-        <AnimatedNumbers includeComma animateToNumber={count} />
-      </Styled.Point>
+      <Point point={point} />
     </Styled.Container>
   );
 }

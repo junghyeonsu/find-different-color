@@ -10,7 +10,3 @@ export const Container = styled.div`
   width: 100vw;
   height: 100vh;
 `;
-
-export const Point = styled.span`
-  font-size: 40px;
-`;
