@@ -4,23 +4,19 @@ import { useState, useEffect, useCallback } from 'react';
 import { Board, Timer, Stage, Point } from '../../components';
 import useTimer, { TimerHookProps } from '../../hooks/useTimer';
 import usePoint, { PointHookProps } from '../../hooks/usePoint';
+import useStage, { StageHookProps } from '../../hooks/useStage';
 import * as Styled from './styled';
 
 function Play(): JSX.Element {
-  const [stage, setStage] = useState<number>(1);
-  const [active, setActive] = useState<boolean>(false);
+  const { stage, animationActive, clearStage, resetStage }: StageHookProps = useStage();
   const { time, startGame, stopGame, resetTime, minusTime }: TimerHookProps = useTimer();
   const { point, resetPoint, scorePoint }: PointHookProps = usePoint();
 
   const handleAnswerCardClick = useCallback(() => {
-    setStage(stage => stage + 1);
-    setActive(true);
+    clearStage();
     resetTime();
     scorePoint(stage, time);
-    setTimeout(() => {
-      setActive(false);
-    }, 100);
-  }, [resetTime, scorePoint, stage, time]);
+  }, [clearStage, resetTime, scorePoint, stage, time]);
 
   const handleWrongCardClick = useCallback(() => {
     minusTime();
@@ -33,16 +29,16 @@ function Play(): JSX.Element {
 
   useEffect(() => {
     if (time <= 0) {
-      setStage(1);
+      resetStage();
       resetTime();
       resetPoint();
       alert(`스테이지: ${stage}, 점수: ${point}`); // TODO: 게임 끝 구현하기
     }
-  }, [point, resetPoint, resetTime, stage, time]);
+  }, [point, resetPoint, resetStage, resetTime, stage, time]);
 
   return (
     <Styled.Container>
-      <Stage active={active} stage={stage} />
+      <Stage active={animationActive} stage={stage} />
       <Timer time={time} />
       <Board
         handleAnswerCardClick={handleAnswerCardClick}
