@@ -6,7 +6,14 @@ interface TimerProps {
 }
 
 function Timer({ time }: TimerProps): JSX.Element {
-  return <Styled.Container>{time}</Styled.Container>;
+  return (
+    <Styled.Container>
+      <Styled.Background>
+        <Styled.Time>{time}</Styled.Time>
+      </Styled.Background>
+      <Styled.Progress time={time} />
+    </Styled.Container>
+  );
 }
 
 export default Timer;

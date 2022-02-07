@@ -26,7 +26,7 @@ function Play(): JSX.Element {
   }, [startGame, stopGame]);
 
   useEffect(() => {
-    if (time <= 0) {
+    if (time < 0) {
       resetStage();
       resetTime();
       resetPoint();
