@@ -1,7 +1,7 @@
 import { useCallback, useRef, useState } from 'react';
 import { INITIAL_TIME, ONE_SECOND } from '../constants';
 
-interface TimerHookProps {
+export interface TimerHookProps {
   time: number;
   startGame: () => void;
   stopGame: () => void;

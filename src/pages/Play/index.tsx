@@ -2,14 +2,14 @@
 // TODO: eslint 지우기
 import { useState, useEffect, useCallback } from 'react';
 import { Board, Timer, Stage, Point } from '../../components';
-import useTimer from '../../hooks/useTimer';
+import useTimer, { TimerHookProps } from '../../hooks/useTimer';
 import * as Styled from './styled';
 
 function Play(): JSX.Element {
   const [point, setPoint] = useState<number>(100000);
   const [stage, setStage] = useState<number>(1);
   const [active, setActive] = useState<boolean>(false);
-  const { time, startGame, stopGame, resetTime, minusTime } = useTimer();
+  const { time, startGame, stopGame, resetTime, minusTime }: TimerHookProps = useTimer();
 
   const handleAnswerCardClick = useCallback(() => {
     setStage(stage => stage + 1);
