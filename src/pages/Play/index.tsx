@@ -9,20 +9,20 @@ function Play(): JSX.Element {
   const [point, setPoint] = useState<number>(100000);
   const [stage, setStage] = useState<number>(1);
   const [active, setActive] = useState<boolean>(false);
-  const { time, startGame, stopGame, resetTime } = useTimer();
+  const { time, startGame, stopGame, resetTime, minusTime } = useTimer();
 
   const handleAnswerCardClick = useCallback(() => {
     setStage(stage => stage + 1);
     setActive(true);
+    resetTime();
     setTimeout(() => {
       setActive(false);
     }, 100);
-  }, []);
+  }, [resetTime]);
 
-  // TODO:
-  // const handleWrongCardClick = useCallback(() => {
-
-  // }, []);
+  const handleWrongCardClick = useCallback(() => {
+    minusTime();
+  }, [minusTime]);
 
   useEffect(() => {
     startGame();
@@ -30,14 +30,21 @@ function Play(): JSX.Element {
   }, [startGame, stopGame]);
 
   useEffect(() => {
-    if (time <= 0) resetTime();
+    if (time <= 0) {
+      resetTime();
+      alert('게임 끝'); // TODO: 게임 끝 구현하기
+    }
   }, [resetTime, time]);
 
   return (
     <Styled.Container>
       <Stage active={active} stage={stage} />
       <Timer time={time} />
-      <Board handleAnswerCardClick={handleAnswerCardClick} stage={stage} />
+      <Board
+        handleAnswerCardClick={handleAnswerCardClick}
+        handleWrongCardClick={handleWrongCardClick}
+        stage={stage}
+      />
       <Point point={point} />
     </Styled.Container>
   );

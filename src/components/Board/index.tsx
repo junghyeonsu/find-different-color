@@ -4,7 +4,7 @@ import { Board as BoardProps } from './types';
 import * as Styled from './styled';
 import { BOARD_SIZE } from '../../constants';
 
-function Board({ stage, handleAnswerCardClick }: BoardProps): JSX.Element {
+function Board({ stage, handleAnswerCardClick, handleWrongCardClick }: BoardProps): JSX.Element {
   const boardRow = useMemo(() => Math.round((stage + 0.5) / 2) + 1, [stage]);
   const cardAmount = useMemo(() => boardRow ** 2, [boardRow]);
   const cardSize = useMemo(() => BOARD_SIZE / (cardAmount / boardRow), [cardAmount, boardRow]);
@@ -44,18 +44,22 @@ function Board({ stage, handleAnswerCardClick }: BoardProps): JSX.Element {
           />
         ) : (
           <Card
-            onClick={() => {
-              // TODO:
-              // eslint-disable-next-line no-console
-              console.log('hi');
-            }}
+            onClick={handleWrongCardClick}
             color={`${colors.wrong}`}
             size={cardSize}
             key={index}
           />
         ),
       ),
-    [cardAmount, answerCardIndex, handleAnswerCardClick, colors.answer, colors.wrong, cardSize],
+    [
+      cardAmount,
+      answerCardIndex,
+      handleAnswerCardClick,
+      colors.answer,
+      colors.wrong,
+      cardSize,
+      handleWrongCardClick,
+    ],
   );
 
   return <Styled.Board>{cards}</Styled.Board>;

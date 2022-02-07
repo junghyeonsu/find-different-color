@@ -6,6 +6,7 @@ interface TimerHookProps {
   startGame: () => void;
   stopGame: () => void;
   resetTime: () => void;
+  minusTime: () => void;
 }
 
 function useTimer(): TimerHookProps {
@@ -31,7 +32,11 @@ function useTimer(): TimerHookProps {
     setTime(INITIAL_TIME);
   }, []);
 
-  return { time, startGame, stopGame, resetTime };
+  const minusTime = useCallback(() => {
+    setTime(time - 3);
+  }, [time]);
+
+  return { time, startGame, stopGame, resetTime, minusTime };
 }
 
 export default useTimer;
