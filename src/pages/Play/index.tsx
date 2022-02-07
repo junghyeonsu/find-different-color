@@ -1,6 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-// TODO: eslint 지우기
-import { useState, useEffect, useCallback } from 'react';
+import { useEffect, useCallback } from 'react';
 import { Board, Timer, Stage, Point } from '../../components';
 import useTimer, { TimerHookProps } from '../../hooks/useTimer';
 import usePoint, { PointHookProps } from '../../hooks/usePoint';
