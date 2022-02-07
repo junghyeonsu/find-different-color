@@ -6,8 +6,20 @@ import useStage, { StageHookProps } from '../../hooks/useStage';
 import * as Styled from './styled';
 
 function Play(): JSX.Element {
-  const { stage, animationActive, clearStage, resetStage }: StageHookProps = useStage();
-  const { time, startGame, stopGame, resetTime, minusTime }: TimerHookProps = useTimer();
+  const {
+    stage,
+    animationActive: stageAnimationActive,
+    clearStage,
+    resetStage,
+  }: StageHookProps = useStage();
+  const {
+    time,
+    animationActive: timerAnimationActive,
+    startGame,
+    stopGame,
+    resetTime,
+    minusTime,
+  }: TimerHookProps = useTimer();
   const { point, resetPoint, scorePoint }: PointHookProps = usePoint();
 
   const handleAnswerCardClick = useCallback(() => {
@@ -37,8 +49,8 @@ function Play(): JSX.Element {
 
   return (
     <Styled.Container>
-      <Stage active={animationActive} stage={stage} />
-      <Timer time={time} />
+      <Stage active={stageAnimationActive} stage={stage} />
+      <Timer active={timerAnimationActive} time={time} />
       <Board
         handleAnswerCardClick={handleAnswerCardClick}
         handleWrongCardClick={handleWrongCardClick}

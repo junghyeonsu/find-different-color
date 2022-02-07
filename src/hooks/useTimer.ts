@@ -3,6 +3,7 @@ import { INITIAL_TIME, ONE_SECOND } from '../constants';
 
 export interface TimerHookProps {
   time: number;
+  animationActive: boolean;
   startGame: () => void;
   stopGame: () => void;
   resetTime: () => void;
@@ -11,6 +12,7 @@ export interface TimerHookProps {
 
 function useTimer(): TimerHookProps {
   const [time, setTime] = useState<number>(INITIAL_TIME);
+  const [animationActive, setAnimationActive] = useState<boolean>(false);
   const intervalRef: { current: NodeJS.Timeout | null } = useRef(null);
 
   const startGame = useCallback(() => {
@@ -34,9 +36,13 @@ function useTimer(): TimerHookProps {
 
   const minusTime = useCallback(() => {
     setTime(time - 3);
+    setAnimationActive(true);
+    setTimeout(() => {
+      setAnimationActive(false);
+    }, 100);
   }, [time]);
 
-  return { time, startGame, stopGame, resetTime, minusTime };
+  return { time, animationActive, startGame, stopGame, resetTime, minusTime };
 }
 
 export default useTimer;
