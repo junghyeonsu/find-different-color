@@ -32,6 +32,7 @@ function Play(): JSX.Element {
       resetStage();
       resetTime();
       resetPoint();
+      // eslint-disable-next-line no-alert
       alert(`스테이지: ${stage}, 점수: ${point}`); // TODO: 게임 끝 구현하기
     }
   }, [point, resetPoint, resetStage, resetTime, stage, time]);
