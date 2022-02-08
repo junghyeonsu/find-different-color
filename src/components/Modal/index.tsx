@@ -1,5 +1,6 @@
 import 'react-responsive-modal/styles.css';
 import { Modal as ResponsiveModal } from 'react-responsive-modal';
+import { Link } from 'react-router-dom';
 import { ModalProps } from './types';
 import * as Styled from './styled';
 
@@ -20,7 +21,9 @@ function Modal({ point, stage, openModal, onCloseModal }: ModalProps) {
         </Styled.ResultContainer>
         <Styled.ButtonContainer>
           <Styled.ReplayButton onClick={onCloseModal}>다시하기</Styled.ReplayButton>
-          <Styled.HomeButton>홈으로</Styled.HomeButton>
+          <Link to="/">
+            <Styled.HomeButton>홈으로</Styled.HomeButton>
+          </Link>
         </Styled.ButtonContainer>
       </Styled.Container>
     </ResponsiveModal>

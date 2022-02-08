@@ -41,10 +41,10 @@ function Play(): JSX.Element {
 
   const onCloseModal = useCallback((): void => {
     setModalOpen(false);
-    startGame();
     resetStage();
     resetTime();
     resetPoint();
+    startGame();
   }, [resetPoint, resetStage, resetTime, startGame]);
 
   useEffect(() => {
