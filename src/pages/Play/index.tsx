@@ -18,18 +18,18 @@ function Play(): JSX.Element {
   const {
     time,
     animationActive: timerAnimationActive,
-    startGame,
-    stopGame,
-    resetTime,
+    startTimer,
+    stopTimer,
+    resetTimer,
     minusTime,
   }: TimerHookProps = useTimer();
   const { point, resetPoint, scorePoint }: PointHookProps = usePoint();
 
   const handleAnswerCardClick = useCallback((): void => {
     clearStage();
-    resetTime();
+    resetTimer();
     scorePoint(stage, time);
-  }, [clearStage, resetTime, scorePoint, stage, time]);
+  }, [clearStage, resetTimer, scorePoint, stage, time]);
 
   const handleWrongCardClick = useCallback((): void => {
     minusTime();
@@ -42,22 +42,22 @@ function Play(): JSX.Element {
   const onCloseModal = useCallback((): void => {
     setModalOpen(false);
     resetStage();
-    resetTime();
+    resetTimer();
     resetPoint();
-    startGame();
-  }, [resetPoint, resetStage, resetTime, startGame]);
+    startTimer();
+  }, [resetPoint, resetStage, resetTimer, startTimer]);
 
   useEffect(() => {
-    startGame();
-    return () => stopGame();
-  }, [startGame, stopGame]);
+    startTimer();
+    return () => stopTimer();
+  }, [startTimer, stopTimer]);
 
   useEffect(() => {
     if (time < 0) {
-      stopGame();
+      stopTimer();
       onOpenModal();
     }
-  }, [onOpenModal, resetTime, stage, stopGame, time]);
+  }, [onOpenModal, stage, stopTimer, time]);
 
   return (
     <Styled.Container>
