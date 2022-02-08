@@ -4,9 +4,9 @@ import { INITIAL_TIME, ONE_SECOND } from '../constants';
 export interface TimerHookProps {
   time: number;
   animationActive: boolean;
-  startGame: () => void;
-  stopGame: () => void;
-  resetTime: () => void;
+  startTimer: () => void;
+  stopTimer: () => void;
+  resetTimer: () => void;
   minusTime: () => void;
 }
 
@@ -15,7 +15,7 @@ function useTimer(): TimerHookProps {
   const [animationActive, setAnimationActive] = useState<boolean>(false);
   const intervalRef: { current: NodeJS.Timeout | null } = useRef(null);
 
-  const startGame = useCallback(() => {
+  const startTimer = useCallback(() => {
     if (intervalRef.current !== null) return;
 
     intervalRef.current = setInterval(() => {
@@ -23,14 +23,14 @@ function useTimer(): TimerHookProps {
     }, ONE_SECOND);
   }, []);
 
-  const stopGame = useCallback(() => {
+  const stopTimer = useCallback(() => {
     if (intervalRef.current === null) return;
 
     clearInterval(intervalRef.current);
     intervalRef.current = null;
   }, []);
 
-  const resetTime = useCallback(() => {
+  const resetTimer = useCallback(() => {
     setTime(INITIAL_TIME);
   }, []);
 
@@ -42,7 +42,7 @@ function useTimer(): TimerHookProps {
     }, 100);
   }, [time]);
 
-  return { time, animationActive, startGame, stopGame, resetTime, minusTime };
+  return { time, animationActive, startTimer, stopTimer, resetTimer, minusTime };
 }
 
 export default useTimer;
