@@ -4,14 +4,14 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   row-gap: 70px;
-  width: 360px;
+  width: 300px;
   height: 360px;
   justify-content: center;
   align-items: center;
 `;
 
 export const Title = styled.h1`
-  font-size: 50px;
+  font-size: 45px;
 `;
 
 export const ResultContainer = styled.div`
@@ -52,7 +52,7 @@ export const ButtonContainer = styled.div`
 export const Button = styled.button`
   color: white;
   font-size: 20px;
-  width: 160px;
+  width: 140px;
   height: 50px;
   border: none;
   transition: 0.3s all ease;

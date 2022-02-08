@@ -1,8 +1,11 @@
+import React from 'react';
 import 'react-responsive-modal/styles.css';
 import { Modal as ResponsiveModal } from 'react-responsive-modal';
 import { Link } from 'react-router-dom';
+
 import { ModalProps } from './types';
 import * as Styled from './styled';
+import JSUtility from '../../utils/JSUtility';
 
 function Modal({ point, stage, openModal, onCloseModal }: ModalProps) {
   return (
@@ -15,7 +18,7 @@ function Modal({ point, stage, openModal, onCloseModal }: ModalProps) {
             <Styled.StageText>스테이지</Styled.StageText>
           </Styled.StageContainer>
           <Styled.PointContainer>
-            <Styled.Point>{point}</Styled.Point>
+            <Styled.Point>{JSUtility.includeCommaInNumber(point)}</Styled.Point>
             <Styled.PointText>point</Styled.PointText>
           </Styled.PointContainer>
         </Styled.ResultContainer>
@@ -30,4 +33,4 @@ function Modal({ point, stage, openModal, onCloseModal }: ModalProps) {
   );
 }
 
-export default Modal;
+export default React.memo(Modal);
