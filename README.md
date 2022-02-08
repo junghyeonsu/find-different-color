@@ -1,13 +1,13 @@
-# find-different-color
+<div align=center>
 
-> **다른 색깔 찾기 게임**  
+# **다른 색깔 찾기 게임**
+
 > [넘블 프로젝트](https://numble-react.vercel.app/) 클론하기 챌린지
+> ![](https://images.velog.io/images/junghyeonsu/post/943745b6-4b26-4400-bd39-9803ebc4a99c/image.png)
 
 ![Feb-08-2022 14-03-14](https://user-images.githubusercontent.com/54893898/152930533-85088c86-4c22-4ccc-8b66-8298fd91d177.gif)
 
-<div align=center>
-  
-  ### [🕹️ 게임하러 가기](https://find-different-color.vercel.app/)
+### [🕹️ 게임하러 가기](https://find-different-color.vercel.app/)
 
 ### [🔥 개발 후기글](https://velog.io/@junghyeonsu/React-Numble-Challenge-%EB%8B%A4%EB%A5%B8-%EC%83%89%EA%B9%94-%EC%B0%BE%EA%B8%B0-%EA%B2%8C%EC%9E%84-%EB%A7%8C%EB%93%A4%EA%B8%B0)
 
