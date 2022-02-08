@@ -1,11 +1,14 @@
-import { useEffect, useCallback } from 'react';
+import { useEffect, useCallback, useState } from 'react';
 import { Board, Timer, Stage, Point } from '../../components';
 import useTimer, { TimerHookProps } from '../../hooks/useTimer';
 import usePoint, { PointHookProps } from '../../hooks/usePoint';
 import useStage, { StageHookProps } from '../../hooks/useStage';
+import Modal from '../../components/Modal';
 import * as Styled from './styled';
 
 function Play(): JSX.Element {
+  const [openModal, setModalOpen] = useState<boolean>(false);
+
   const {
     stage,
     animationActive: stageAnimationActive,
@@ -22,15 +25,27 @@ function Play(): JSX.Element {
   }: TimerHookProps = useTimer();
   const { point, resetPoint, scorePoint }: PointHookProps = usePoint();
 
-  const handleAnswerCardClick = useCallback(() => {
+  const handleAnswerCardClick = useCallback((): void => {
     clearStage();
     resetTime();
     scorePoint(stage, time);
   }, [clearStage, resetTime, scorePoint, stage, time]);
 
-  const handleWrongCardClick = useCallback(() => {
+  const handleWrongCardClick = useCallback((): void => {
     minusTime();
   }, [minusTime]);
+
+  const onOpenModal = useCallback((): void => {
+    setModalOpen(true);
+  }, []);
+
+  const onCloseModal = useCallback((): void => {
+    setModalOpen(false);
+    startGame();
+    resetStage();
+    resetTime();
+    resetPoint();
+  }, [resetPoint, resetStage, resetTime, startGame]);
 
   useEffect(() => {
     startGame();
@@ -39,13 +54,10 @@ function Play(): JSX.Element {
 
   useEffect(() => {
     if (time < 0) {
-      resetStage();
-      resetTime();
-      resetPoint();
-      // eslint-disable-next-line no-alert
-      alert(`스테이지: ${stage}, 점수: ${point}`); // TODO: 게임 끝 구현하기
+      stopGame();
+      onOpenModal();
     }
-  }, [point, resetPoint, resetStage, resetTime, stage, time]);
+  }, [onOpenModal, resetTime, stage, stopGame, time]);
 
   return (
     <Styled.Container>
@@ -57,6 +69,7 @@ function Play(): JSX.Element {
         stage={stage}
       />
       <Point point={point} />
+      <Modal point={point} stage={stage} openModal={openModal} onCloseModal={onCloseModal} />
     </Styled.Container>
   );
 }
