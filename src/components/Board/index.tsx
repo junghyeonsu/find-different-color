@@ -15,8 +15,8 @@ function Board({ stage, handleAnswerCardClick, handleWrongCardClick }: BoardProp
   const difficulty = useMemo(() => (100 - stage * 2 > 0 ? 100 - stage * 2 : 2), [stage]);
 
   const pickRandomColor = useCallback(() => Math.floor(Math.random() * 256), []);
-  const pickAnswerRedColor = useCallback(
-    red => (red > 100 ? red - difficulty : red + difficulty),
+  const pickAnswerColor = useCallback(
+    color => (color > 100 ? color - difficulty : color + difficulty),
     [difficulty],
   );
 
@@ -24,13 +24,15 @@ function Board({ stage, handleAnswerCardClick, handleWrongCardClick }: BoardProp
     const red = pickRandomColor();
     const green = pickRandomColor();
     const blue = pickRandomColor();
-    const answerRed = pickAnswerRedColor(red);
+    const answerRed = pickAnswerColor(red);
+    const answerGreen = pickAnswerColor(green);
+    const answerBlue = pickAnswerColor(blue);
 
     return {
       wrong: `rgb(${red}, ${green}, ${blue})`,
-      answer: `rgb(${answerRed}, ${green}, ${blue})`,
+      answer: `rgb(${answerRed}, ${answerGreen}, ${answerBlue})`,
     };
-  }, [pickRandomColor, pickAnswerRedColor]);
+  }, [pickRandomColor, pickAnswerColor]);
 
   const cards = useMemo(
     () =>
