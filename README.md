@@ -21,6 +21,7 @@
 - react-router-dom (router)
 - styled-components (CSS in JS)
 - react-animated-numbers (number animation)
+- react-responsive-modal (Modal component)
 - Eslint & Prettier (linter & formatter)
 - Vercel (deploy)
 
