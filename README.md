@@ -2,8 +2,9 @@
 
 # **다른 색깔 찾기 게임**
 
-> [넘블 프로젝트](https://numble-react.vercel.app/) 클론하기 챌린지
-> ![](https://images.velog.io/images/junghyeonsu/post/943745b6-4b26-4400-bd39-9803ebc4a99c/image.png)
+[넘블 프로젝트](https://numble-react.vercel.app/) 클론하기 챌린지
+
+![](https://images.velog.io/images/junghyeonsu/post/943745b6-4b26-4400-bd39-9803ebc4a99c/image.png)
 
 ![Feb-08-2022 14-03-14](https://user-images.githubusercontent.com/54893898/152930533-85088c86-4c22-4ccc-8b66-8298fd91d177.gif)
 
