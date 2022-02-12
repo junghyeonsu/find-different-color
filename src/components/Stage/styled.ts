@@ -14,7 +14,7 @@ export const Stage = styled.span`
 
   @keyframes bounce {
     0% {
-      transform: scale(3);
+      transform: scale(4);
     }
     40% {
       transform: scale(0.4);
