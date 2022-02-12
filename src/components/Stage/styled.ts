@@ -8,16 +8,22 @@ export const StageContainer = styled.div`
 `;
 
 export const Stage = styled.span`
-  animation: ${(props: StageProps) => props.active && `scaleDown 0.4s infinite ease`};
+  animation: ${(props: StageProps) => props.active && `bounce 0.5s infinite ease`};
   font-size: 56px;
   font-weight: bold;
 
-  @keyframes scaleDown {
+  @keyframes bounce {
     0% {
       transform: scale(3);
     }
-    30% {
-      transform: scale(1.1);
+    40% {
+      transform: scale(0.4);
+    }
+    60% {
+      transform: scale(1.3);
+    }
+    80% {
+      transform: scale(0.8);
     }
     100% {
       transform: scale(1);

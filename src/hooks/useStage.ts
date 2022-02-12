@@ -16,7 +16,7 @@ function useStage(): StageHookProps {
     setAnimationActive(true);
     setTimeout(() => {
       setAnimationActive(false);
-    }, 100);
+    }, 500);
   }, []);
 
   const resetStage = useCallback(() => {
