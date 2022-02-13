@@ -1,12 +1,11 @@
 type Keys = 'userName';
-type Value = { [k in Keys]: string };
 
 const store = {
-  setSessionStorage(key: string, value: Value): void {
+  setSessionStorage(key: Keys, value: string): void {
     sessionStorage.setItem(key, JSON.stringify(value));
   },
-  getSessionStorage(value: string): Value | null {
-    const item = sessionStorage.getItem(value);
+  getSessionStorage(key: Keys): string | null {
+    const item = sessionStorage.getItem(key);
     return item ? JSON.parse(item) : null;
   },
 };
