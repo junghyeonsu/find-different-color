@@ -2,13 +2,18 @@ import { useCallback, useState } from 'react';
 import 'react-responsive-modal/styles.css';
 import { Modal as ResponsiveModal } from 'react-responsive-modal';
 import { useNavigate } from 'react-router-dom';
+import { useSetRecoilState } from 'recoil';
 
+import { userNameState, loginState } from '../../recoil/auth';
 import { ModalProps } from './types';
 import * as Styled from './styled';
 
 function GameStartModal({ openModal, onCloseModal }: ModalProps) {
   const [nickname, setNickname] = useState<string>('');
   const [error, setError] = useState<string>('');
+  const setLogin = useSetRecoilState<boolean>(loginState);
+  const setUserName = useSetRecoilState<string>(userNameState);
+
   const navigate = useNavigate();
 
   const onClickStartButton = useCallback(() => {
@@ -18,7 +23,9 @@ function GameStartModal({ openModal, onCloseModal }: ModalProps) {
     }
 
     navigate('/play');
-  }, [navigate, nickname]);
+    setLogin(true);
+    setUserName(nickname);
+  }, [navigate, nickname, setLogin, setUserName]);
 
   const onChangeNickName = useCallback(event => {
     setNickname(event.target.value);

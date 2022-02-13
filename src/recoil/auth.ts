@@ -1,7 +1,7 @@
 import { atom } from 'recoil';
 
-const authState = atom<boolean>({
-  key: 'authState',
+const loginState = atom<boolean>({
+  key: 'loginState',
   default: false,
 });
 
@@ -10,4 +10,4 @@ const userNameState = atom<string>({
   default: '',
 });
 
-export { authState, userNameState };
+export { loginState, userNameState };
