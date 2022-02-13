@@ -35,3 +35,18 @@ export const PlayButton = styled.button`
     background-color: rgba(66, 73, 255, 0.5);
   }
 `;
+
+export const RankButton = styled.button`
+  width: 320px;
+  height: 50px;
+  background-color: #fd625c;
+  border: none;
+  color: white;
+  font-size: 20px;
+  transition: 0.2s all ease;
+
+  :hover {
+    cursor: pointer;
+    background-color: #fd625c43;
+  }
+`;

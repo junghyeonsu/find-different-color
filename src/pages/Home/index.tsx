@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react';
 import { useRecoilValue } from 'recoil';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 import { userNameState } from '../../recoil/auth';
 import { GameStartModal } from '../../components';
@@ -29,6 +29,9 @@ function Home(): JSX.Element {
       <Styled.Title>다른 색깔 찾기</Styled.Title>
       <Styled.SubTitle>Numble Challenge</Styled.SubTitle>
       <Styled.PlayButton onClick={onOpenModal}>게임 시작</Styled.PlayButton>
+      <Link to="/rank">
+        <Styled.RankButton>랭크 보기</Styled.RankButton>
+      </Link>
       <GameStartModal openModal={openModal} onCloseModal={onCloseModal} />
     </Styled.Container>
   );
