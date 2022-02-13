@@ -1,9 +1,8 @@
 import { useEffect, useCallback, useState } from 'react';
-import { Board, Timer, Stage, Point } from '../../components';
+import { Board, Timer, Stage, Point, GameOverModal } from '../../components';
 import useTimer, { TimerHookProps } from '../../hooks/useTimer';
 import usePoint, { PointHookProps } from '../../hooks/usePoint';
 import useStage, { StageHookProps } from '../../hooks/useStage';
-import Modal from '../../components/Modal';
 import * as Styled from './styled';
 
 function Play(): JSX.Element {
@@ -69,7 +68,12 @@ function Play(): JSX.Element {
         stage={stage}
       />
       <Point point={point} />
-      <Modal point={point} stage={stage} openModal={openModal} onCloseModal={onCloseModal} />
+      <GameOverModal
+        point={point}
+        stage={stage}
+        openModal={openModal}
+        onCloseModal={onCloseModal}
+      />
     </Styled.Container>
   );
 }
