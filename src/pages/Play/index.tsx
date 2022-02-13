@@ -61,9 +61,12 @@ function Play(): JSX.Element {
     if (time < 0) {
       stopTimer();
       onOpenModal();
+      resetTimer();
+      console.log('실행');
+
       addRecordInStore(stage, point);
     }
-  }, [addRecordInStore, onOpenModal, point, stage, stopTimer, time]);
+  }, [addRecordInStore, onOpenModal, point, resetTimer, stage, stopTimer, time]);
 
   return (
     <Styled.Container>
