@@ -1,4 +1,6 @@
-type Keys = 'userName';
+import { USER_NAME } from '../constants';
+
+type Keys = typeof USER_NAME;
 
 const store = {
   setSessionStorage(key: Keys, value: string): void {

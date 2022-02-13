@@ -3,6 +3,7 @@ import { collection, addDoc } from 'firebase/firestore';
 
 import firestore from '../firebaseInit';
 import store from '../utils/store';
+import { USERS_COLLECTION, USER_NAME } from '../constants';
 
 export interface FirestoreHookProps {
   addRecordInStore: (stage: number, point: number) => void;
@@ -11,8 +12,8 @@ export interface FirestoreHookProps {
 function useFirestore(): FirestoreHookProps {
   const addRecordInStore = useCallback(async (stage: number, point: number) => {
     try {
-      await addDoc(collection(firestore, 'users'), {
-        userName: store.getSessionStorage('userName'),
+      await addDoc(collection(firestore, USERS_COLLECTION), {
+        userName: store.getSessionStorage(USER_NAME),
         stage,
         point,
       });
