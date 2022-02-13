@@ -10,3 +10,9 @@ export const Container = styled.div`
   width: 100vw;
   height: 100vh;
 `;
+
+export const UserName = styled.p`
+  text-align: center;
+  color: #b1b1b1;
+  margin: 0;
+`;

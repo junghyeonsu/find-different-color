@@ -1,12 +1,15 @@
 import { useEffect, useCallback, useState } from 'react';
+import { useRecoilValue } from 'recoil';
 import { Board, Timer, Stage, Point, GameOverModal } from '../../components';
 import useTimer, { TimerHookProps } from '../../hooks/useTimer';
 import usePoint, { PointHookProps } from '../../hooks/usePoint';
 import useStage, { StageHookProps } from '../../hooks/useStage';
+import { userNameState } from '../../recoil/auth';
 import * as Styled from './styled';
 
 function Play(): JSX.Element {
   const [openModal, setModalOpen] = useState<boolean>(false);
+  const userName = useRecoilValue<string>(userNameState);
 
   const {
     stage,
@@ -68,6 +71,11 @@ function Play(): JSX.Element {
         stage={stage}
       />
       <Point point={point} />
+      <Styled.UserName>
+        {userName}님
+        <br />
+        기록되고 있습니다!
+      </Styled.UserName>
       <GameOverModal
         point={point}
         stage={stage}
