@@ -5,3 +5,4 @@ export { default as Point } from './Point';
 export { default as Card } from './Card';
 export { default as Footer } from './Footer';
 export { default as GameOverModal } from './GameOverModal';
+export { default as GameStartModal } from './GameStartModal';
