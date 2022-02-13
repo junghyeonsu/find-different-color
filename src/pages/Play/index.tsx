@@ -1,15 +1,18 @@
 import { useEffect, useCallback, useState } from 'react';
 import { useRecoilValue } from 'recoil';
+
 import { Board, Timer, Stage, Point, GameOverModal } from '../../components';
 import useTimer, { TimerHookProps } from '../../hooks/useTimer';
 import usePoint, { PointHookProps } from '../../hooks/usePoint';
 import useStage, { StageHookProps } from '../../hooks/useStage';
+import useFirestore, { FirestoreHookProps } from '../../hooks/useFirestore';
 import { userNameState } from '../../recoil/auth';
 import * as Styled from './styled';
 
 function Play(): JSX.Element {
   const [openModal, setModalOpen] = useState<boolean>(false);
   const userName = useRecoilValue<string>(userNameState);
+  const { addRecordInStore }: FirestoreHookProps = useFirestore();
 
   const {
     stage,
@@ -58,8 +61,9 @@ function Play(): JSX.Element {
     if (time < 0) {
       stopTimer();
       onOpenModal();
+      addRecordInStore(stage, point);
     }
-  }, [onOpenModal, stage, stopTimer, time]);
+  }, [addRecordInStore, onOpenModal, point, stage, stopTimer, time]);
 
   return (
     <Styled.Container>
