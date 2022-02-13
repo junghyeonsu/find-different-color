@@ -62,8 +62,6 @@ function Play(): JSX.Element {
       stopTimer();
       onOpenModal();
       resetTimer();
-      console.log('실행');
-
       addRecordInStore(stage, point);
     }
   }, [addRecordInStore, onOpenModal, point, resetTimer, stage, stopTimer, time]);

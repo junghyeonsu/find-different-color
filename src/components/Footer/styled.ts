@@ -1,14 +1,10 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100vw;
-  height: 40px;
-  position: absolute;
+  position: fixed;
+  margin: 10px;
   bottom: 0;
-  left: 0;
+  right: 0;
 `;
 
 export const Name = styled.a`
