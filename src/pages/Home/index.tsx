@@ -1,13 +1,24 @@
 import { useCallback, useState } from 'react';
+import { useRecoilValue } from 'recoil';
+import { useNavigate } from 'react-router-dom';
+
+import { userNameState } from '../../recoil/auth';
 import { GameStartModal } from '../../components';
 import * as Styled from './styled';
 
 function Home(): JSX.Element {
   const [openModal, setModalOpen] = useState<boolean>(false);
+  const userName = useRecoilValue(userNameState);
+  const navigation = useNavigate();
 
   const onOpenModal = useCallback((): void => {
+    if (userName) {
+      navigation('/play');
+      return;
+    }
+
     setModalOpen(true);
-  }, []);
+  }, [navigation, userName]);
 
   const onCloseModal = useCallback((): void => {
     setModalOpen(false);
