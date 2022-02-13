@@ -6,14 +6,19 @@ import { Footer } from './components';
 import { Home, Play } from './pages';
 import store from './utils/store';
 import { userNameState } from './recoil/auth';
+import { USER_NAME } from './constants';
+import useFirestore from './hooks/useFirestore';
 
 function App() {
   const setUserName = useSetRecoilState(userNameState);
+  const { getRecordsInStore } = useFirestore();
 
   useEffect(() => {
-    const userName = store.getSessionStorage('userName');
+    const userName = store.getSessionStorage(USER_NAME);
     if (userName) setUserName(userName);
-  }, [setUserName]);
+
+    getRecordsInStore();
+  }, [getRecordsInStore, setUserName]);
 
   return (
     <>

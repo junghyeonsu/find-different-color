@@ -20,7 +20,7 @@ const firebaseConfigDev = {
   appId: '1:873766327160:web:4d26bb65de18f8ba50ae8d',
 };
 
-const config = process.env.NODE_ENV === 'development' ? firebaseConfigDev : firebaseConfigProd;
+const config = process.env.NODE_ENV !== 'development' ? firebaseConfigDev : firebaseConfigProd;
 
 initializeApp(config);
 const firestore = getFirestore();
