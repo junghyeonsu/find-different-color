@@ -8,7 +8,7 @@ export const StageContainer = styled.div`
 `;
 
 export const Stage = styled.span`
-  animation: ${(props: StageProps) => props.active && `bounce 0.5s infinite ease`};
+  animation: ${(props: StageProps) => props.active && `bounce 0.3s infinite ease`};
   font-size: 56px;
   font-weight: bold;
 
