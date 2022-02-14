@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   position: fixed;
-  margin: 10px;
+  margin: 30px;
   bottom: 0;
   right: 0;
 `;
