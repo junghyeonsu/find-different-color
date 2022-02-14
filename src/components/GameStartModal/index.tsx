@@ -17,14 +17,15 @@ function GameStartModal({ openModal, onCloseModal }: ModalProps) {
   const navigate = useNavigate();
 
   const onClickStartButton = useCallback(() => {
-    if (!nickname) {
+    const trimNickName = nickname.trim();
+    if (!trimNickName) {
       setError('닉네임을 입력해주세요!');
       return;
     }
 
     navigate('/play');
-    setUserName(nickname);
-    store.setSessionStorage('userName', nickname);
+    setUserName(trimNickName);
+    store.setSessionStorage('userName', trimNickName);
   }, [navigate, nickname, setUserName]);
 
   const onChangeNickName = useCallback(event => {
