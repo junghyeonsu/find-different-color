@@ -12,11 +12,10 @@ function Rank(): JSX.Element {
   const [userList, setUserList] = useState<UsersRecordProps[] | DocumentData[]>([]);
 
   useEffect(() => {
-    console.log('실행');
-
     (async () => {
       setUserList(await getRecordsInStore());
     })();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

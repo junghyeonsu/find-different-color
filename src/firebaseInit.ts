@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { initializeApp } from 'firebase/app';
 import { getFirestore } from 'firebase/firestore';
 
