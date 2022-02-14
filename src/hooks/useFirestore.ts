@@ -6,7 +6,6 @@ import {
   collection,
   limit,
   addDoc,
-  QuerySnapshot,
   DocumentData,
 } from 'firebase/firestore';
 
@@ -23,7 +22,7 @@ export interface UsersRecordProps {
 
 export interface FirestoreHookProps {
   addRecordInStore: (stage: number, point: number) => void;
-  getRecordsInStore: () => Promise<QuerySnapshot<DocumentData>>;
+  getRecordsInStore: () => Promise<UsersRecordProps[] | DocumentData[]>;
 }
 
 function useFirestore(): FirestoreHookProps {
@@ -46,7 +45,7 @@ function useFirestore(): FirestoreHookProps {
     [usersRef],
   );
 
-  const getRecordsInStore = useCallback(async (): Promise<QuerySnapshot<DocumentData>> => {
+  const getRecordsInStore = useCallback(async (): Promise<UsersRecordProps[] | DocumentData[]> => {
     const querySnapshot = query(
       usersRef,
       orderBy('stage', 'desc'),
@@ -54,7 +53,7 @@ function useFirestore(): FirestoreHookProps {
       limit(100),
     );
     const documentSnapshots = await getDocs(querySnapshot);
-    return documentSnapshots;
+    return documentSnapshots.docs.map(doc => doc.data());
   }, [usersRef]);
 
   return { addRecordInStore, getRecordsInStore };
