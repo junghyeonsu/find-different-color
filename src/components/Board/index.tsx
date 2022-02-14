@@ -14,8 +14,6 @@ function Board({ stage, handleAnswerCardClick, handleWrongCardClick }: BoardProp
   );
   const difference = useMemo(() => (100 - stage * 2 > 5 ? 100 - stage * 2 : 5), [stage]);
 
-  console.log(difference);
-
   const pickRandomColor = useCallback(() => Math.floor(Math.random() * 256), []);
   const pickAnswerColor = useCallback(
     color => (color > 100 ? color - difference : color + difference),
