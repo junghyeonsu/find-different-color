@@ -1,11 +1,7 @@
 {
   "compilerOptions": {
     "target": "es6",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "noImplicitAny": true,
     "allowJs": true,
     "skipLibCheck": true,
@@ -21,7 +17,5 @@
     "outDir": "./dist",
     "typeRoots": ["./node_modules/@types", "types"]
   },
-  "include": [
-    "./src/**/*"
-  ]
+  "include": ["./src/**/*", "./public/**/*"]
 }

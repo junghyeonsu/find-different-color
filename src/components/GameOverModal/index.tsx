@@ -7,7 +7,7 @@ import { ModalProps } from './types';
 import * as Styled from './styled';
 import JSUtility from '../../utils/JSUtility';
 
-function Modal({ point, stage, openModal, onCloseModal }: ModalProps) {
+function GameOverModal({ point, stage, openModal, onCloseModal }: ModalProps) {
   return (
     <ResponsiveModal open={openModal} onClose={onCloseModal} center>
       <Styled.Container>
@@ -33,4 +33,4 @@ function Modal({ point, stage, openModal, onCloseModal }: ModalProps) {
   );
 }
 
-export default React.memo(Modal);
+export default React.memo(GameOverModal);
