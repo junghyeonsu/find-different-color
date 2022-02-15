@@ -23,6 +23,12 @@ function GameStartModal({ openModal, onCloseModal }: ModalProps) {
       return;
     }
 
+    if (trimNickName.length > 10) {
+      setError('닉네임은 10자 이하로 작성해주세요');
+      setNickname('');
+      return;
+    }
+
     navigate('/play');
     setUserName(trimNickName);
     store.setSessionStorage('userName', trimNickName);
