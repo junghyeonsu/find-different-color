@@ -30,8 +30,7 @@ const firebaseConfigTemp = {
   appId: process.env.REACT_APP_TEMP_APP_ID,
 };
 
-// const config = process.env.NODE_ENV === 'development' ? firebaseConfigDev : firebaseConfigProd;
-const config = firebaseConfigTemp;
+const config = process.env.NODE_ENV === 'development' ? firebaseConfigDev : firebaseConfigProd;
 
 // initializeApp(config);
 initializeApp(config);
