@@ -26,35 +26,32 @@ export interface FirestoreHookProps {
 }
 
 function useFirestore(): FirestoreHookProps {
-  const usersRef = collection(firestore, USERS_COLLECTION);
+  const addRecordInStore = async (stage: number, point: number) => {
+    try {
+      await addDoc(collection(firestore, USERS_COLLECTION), {
+        userName: store.getSessionStorage(USER_NAME),
+        stage,
+        point,
+        time: new Date(),
+      });
+    } catch (e) {
+      // eslint-disable-next-line no-console
+      console.error('Error adding document: ', e);
+    }
+  };
 
-  const addRecordInStore = useCallback(
-    async (stage: number, point: number) => {
-      try {
-        await addDoc(usersRef, {
-          userName: store.getSessionStorage(USER_NAME),
-          stage,
-          point,
-          time: new Date(),
-        });
-      } catch (e) {
-        // eslint-disable-next-line no-console
-        console.error('Error adding document: ', e);
-      }
-    },
-    [usersRef],
-  );
-
-  const getRecordsInStore = useCallback(async (): Promise<UsersRecordProps[] | DocumentData[]> => {
-    const querySnapshot = query(
-      usersRef,
-      orderBy('stage', 'desc'),
-      orderBy('point', 'desc'),
-      limit(100),
+  const getRecordsInStore = async (): Promise<UsersRecordProps[] | DocumentData[]> => {
+    const querySnapshot = await getDocs(
+      query(
+        collection(firestore, USERS_COLLECTION),
+        orderBy('stage', 'desc'),
+        orderBy('point', 'desc'),
+        limit(100),
+      ),
     );
-    const documentSnapshots = await getDocs(querySnapshot);
-    return documentSnapshots.docs.map(doc => doc.data());
-  }, [usersRef]);
+
+    return querySnapshot.docs.map(doc => doc.data());
+  };
 
   return { addRecordInStore, getRecordsInStore };
 }
