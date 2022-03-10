@@ -27,6 +27,7 @@ function Rank(): JSX.Element {
         <Styled.TitleContaienr>
           <Styled.Title>랭킹</Styled.Title>
           <Styled.SubTitle>랭킹은 1위부터 100위까지만 표시됩니다.</Styled.SubTitle>
+          <Styled.SubTitle>랭킹은 주기적으로 초기화합니다. (보통 일주일 단위)</Styled.SubTitle>
         </Styled.TitleContaienr>
       </Styled.Header>
       <Styled.Table>
